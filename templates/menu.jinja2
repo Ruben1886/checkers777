@@ -1,0 +1,15 @@
+{% extends 'layout.jinja2' %}
+
+{% block body %}
+
+    <div class="menu_home">
+
+        <form action="/game" method="POST">
+            <button type="submit" name="game_mode" value="hotseat"}>Hotseat</button>
+            <button type="submit" name="game_mode" value="singleplayer"}>Singleplayer</button>
+            <button type="submit" name="game_mode" value="multiplayer">Multiplayer</button>
+        </form>
+
+    </div>
+
+{% endblock %}

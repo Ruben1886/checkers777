@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Tomasz Walasik">
+        <link rel='shortcut icon' type='image/x-icon' href='../static/images/pawn_v_k.png' />
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lora" />
+
+        {% if game_mode %}
+                <title>Checkers - {{ game_mode.capitalize() }}</title>
+        {% else %}
+                <title>Checkers</title>
+        {% endif %}
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+
+    </head>
+
+    <body>
+        <div id="floor">
+                    <h1>
+                        <img src="../static/images/pawn_v_k.png">
+                        Checkers
+                    </h1>
+
+                    {% if game_mode %}
+                        <h2 class="game_mode">
+                            {{ game_mode.capitalize() }}
+                        </h2>
+
+                    {% endif %}
+
+                    {% if game_mode %}
+                        <!--blank-->
+                    {% else %}
+
+                        <div id="rules">
+
+                            <p id="p_rules_head">Rules:</p>
+                            <p class="p_rules">1. Purple starts.</p>
+                            <p class="p_rules">2. A piece making a non-capturing move may move only one square.</p>
+                            <p class="p_rules">3. Moves are allowed only on the brown squares.</p>
+                            <p class="p_rules">4. A piece making a capturing move leaps over one of the opponent's pieces, landing in a straight diagonal line on the other side.</p>
+                            <p class="p_rules">5. Kings are limited to moving diagonally but may move both forward and backward by one square.</p>
+                            <p class="p_rules">6. Only one piece may be captured in a single jump; however, multiple jumps are allowed during a single turn.</p>
+                            <p class="p_rules">7. There is no obligation to do capturing move when it is available.</p>
+
+                        </div>
+
+                    {% endif %}
+
+                    {% block body %}
+                    {% endblock %}
+
+        </div>
+                <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+                <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    </body>
+</html>

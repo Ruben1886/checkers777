@@ -1,0 +1,58 @@
+{% extends 'layout.jinja2' %}
+
+{% block body %}
+
+    <div id="inside">
+
+        <div id="gB">
+            {% include 'game_board.jinja2' %}
+        </div>
+        <div id="communicates">
+
+
+            <p id="p_communicates_head">
+                {{ response.capitalize() }}
+            </p>
+
+            <p id="p_communicates">
+                    {% if turn[1] == 'b' %}
+                        Turn of Blue
+                    {% elif turn[1] == 'v' %}
+                        Turn of Purple
+                    {% else %}
+                        Game has ended
+                    {% endif %}
+            </p>
+
+        </div>
+
+        <div class="menu_ingame">
+
+            <form action="/game" method="POST">
+                <button type="submit" name="restart" value="true">Restart</button>
+            </form>
+
+             <form action="/home" method="POST">
+                <button type="submit" name="restart" value="true">Menu</button>
+            </form>
+
+        </div>
+
+        {% if game_mode == 'multiplayer' %}
+
+            <h3>Link to room:</h3>
+
+            <input id="link" type="text" value="https://link-do-roomu.com/dla-drugiego-gracza" readonly>
+
+            <div>
+
+                <button id="copy_button" onClick="copy_to_clipboard()">Copy to clipboard</button>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}
+

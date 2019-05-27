@@ -1,0 +1,55 @@
+{# variables types and values:
+    x = row (int)
+    y = column (int)
+
+    data-row (int)
+    data-column (int)
+#}
+
+<div class="battleground">
+
+    {% for x in range(6) %} {# rows #}
+
+        <p id="p_battleground"> {# single line #}
+            {% for y in range(6) %} {# columns #}
+
+                <div class = "box {% if (x + y) % 2 == 0 %}box_even{% else %}box_odd{% endif %}" {# classes #}
+
+                data-row="{{ x }}" data-column="{{ y }}" {# datas #}
+
+                onClick="get_coords($(this).data('row'), $(this).data('column')); $('#gB').fadeTo('fast', 0.7);" {# js function #}
+
+                >
+
+                    {# DISPLAY BASED ON BOARD VALUES #}
+
+                    {% if board[(x,y)] == 'v' %}
+                        <img src="../static/images/pawn_v.png" alt="vK">
+
+                    {% elif board[(x,y)] == 'v_k' %}
+                        <img src="../static/images/pawn_v_k.png" alt="vK">
+
+                    {% elif board[(x,y)] == 'b' %}
+                        <img src="../static/images/pawn_b.png" alt="b">
+
+                    {% elif board[(x,y)] == 'b_k' %}
+                        <img src="../static/images/pawn_b_k.png" alt="bK">
+
+                    {% else %}
+                        {# empty #}
+
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+        </p>
+
+    {% endfor %}
+
+</div>
+
+
+
+
+
