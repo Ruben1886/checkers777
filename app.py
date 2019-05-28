@@ -70,13 +70,6 @@ def game():
             return render_template('game.jinja2', game_mode=game_mode, board=board, response=response, turn=turn)
 
 
-if __name__ == '__main__':
-    if len(sys.argv) == 2:
-        if sys.argv[1] == '--heroku':
-            port = int(os.getenv('PORT'))
-            app.run(host='0.0.0.0', port=port, debug=False)
-
-        if sys.argv[1] == '--wierzba':
-            app.run(host='0.0.0.0', port=5035, debug=True)
-    else:
-        app.run(host='0.0.0.0', debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
